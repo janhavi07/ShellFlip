@@ -118,4 +118,7 @@ function triplet()
 triplet noOfTimes noOfCoins
 echo  ${triplet[@]} #prints the no of key values occured
 echo ${!triplet[@]} #prints all the key values
-echo ${resultTriplet[@]} #prints the percentage 
+echo ${resultTriplet[@]} #prints the percentage
+
+maxValue=$( printf "%s\n" ${!resultTriplet[@]} ${resultTriplet[@]} | sort -nr | head -1 ) #sorts the dictionary in descending order
+echo $maxValue # prints the highest percentage
