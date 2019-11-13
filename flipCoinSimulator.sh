@@ -87,5 +87,35 @@ THP=$(( ($HHcount*100)/$noOfTimes ))
 doublet[TH]=$THP
 echo ${doublet[TH]}
 
+declare -A triplet
+declare -A resultTriplet
+read -p "Enter the number of coins : " noOfCoins
 
+function triplet()
+{
+	for(( i=1; i<=$1; i++ )) 
+	{
+		str=""
+		for (( k=1; k<=$2; k++ ))
+		do
 
+				result=$((RANDOM%2))
+				if [ $result -eq 1 ]
+				then
+					str="${str}H"
+					echo "${str}"
+				elif [ $result -eq 0 ]
+				then
+					str="${str}T"
+					echo "${str}"
+				fi
+		done
+		triplet[$str]=$(( ${triplet[$str]} +1 ))
+		resultTriplet[$str]=$(( (${triplet[$str]}*100)/$noOfTimes ))
+	}
+}
+
+triplet noOfTimes noOfCoins
+echo  ${triplet[@]} #prints the no of key values occured
+echo ${!triplet[@]} #prints all the key values
+echo ${resultTriplet[@]} #prints the percentage 
