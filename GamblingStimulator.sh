@@ -11,11 +11,12 @@ do
 	for(( j=1; j<=$noOfGames; j++ ))
 	do
 		bet=$(( $bet +1 ))
-		if [ $stack -eq 0 ]
+		winLose=$((RANDOM%2))
+		if [ $winLose -eq 1 ]
 		then
-			break
+			stake=$(( $stake +1 ))
 		else
-			stack=$(( $stack -1 ))
+			stake=$(( $stake -1 ))
 		fi
 	done
 done
